@@ -262,6 +262,23 @@ listado). Las ofertas (`Offer`) van en su propia colección.
 
 ---
 
+## 6.10 Bases de datos en la nube (Supabase y MongoDB Atlas) 🆕
+
+> Detalle completo en `12-despliegue-y-cloud-render-supabase-atlas.md`.
+
+| Pregunta | Respuesta corta |
+|----------|-----------------|
+| ¿Qué es una DBaaS? | Base de datos gestionada por un proveedor: backups, réplicas, TLS y actualizaciones incluidos |
+| ¿Qué usaste para Postgres en producción? | **Supabase**, conectado desde mi API NestJS en Render con un `pg.Pool` por el **Session pooler** |
+| ¿Y para Mongo? | **MongoDB Atlas** (M0), conectado desde Express con `mongodb+srv://` |
+| ¿Cambió tu código al pasar de Docker a la nube? | No: solo la cadena de conexión en una variable de entorno |
+| ¿Qué es un replica set? | 3 nodos con los mismos datos (primary + 2 secondaries) y elección automática si cae el primary. Permite transacciones en Mongo |
+| ¿Qué es un *connection pooler*? | Intermediario que reparte pocas conexiones reales a la BD entre muchos clientes (Supavisor en Supabase) |
+| ¿Qué es RLS? | Row Level Security: políticas por fila en Postgres. Clave en Supabase si el front accede directamente |
+| ¿Cómo migras datos de local a la nube? | `pg_dump`/`psql` o el SQL Editor (Postgres); `mongodump`/`mongorestore` o el *seed* con `mongosh` (Mongo) |
+
+---
+
 ## 🎯 Cómo responderlo en la entrevista
 
 **¿SQL o NoSQL?**

@@ -1,6 +1,6 @@
 # 10 — 🗣️ PREGUNTAS DE ENTREVISTA CON RESPUESTAS
 
-> Repaso final: **~70 preguntas** frecuentes con una **respuesta corta modelo**.
+> Repaso final: **~95 preguntas** frecuentes con una **respuesta corta modelo**.
 > 📌 No las memorices palabra por palabra: entiéndelas y **dilas con tus palabras, en voz
 > alta**. Si puedes, añade siempre un *"por ejemplo, en mi proyecto…"*.
 
@@ -11,8 +11,9 @@
 **1. Háblame de ti.**
 > Estructura **presente → pasado → futuro** (1 minuto):
 > "Soy desarrollador FullStack junior. He terminado un bootcamp donde he trabajado con
-> JavaScript y TypeScript, Node, Express y NestJS, y bases de datos PostgreSQL y
-> MongoDB. Antes [tu experiencia previa y qué te aporta: trato con clientes, trabajo en
+> JavaScript y TypeScript, React en el frontend, Node, Express y NestJS en el backend, y
+> bases de datos PostgreSQL y MongoDB, y he desplegado mis APIs en Render con Supabase y
+> MongoDB Atlas. Antes [tu experiencia previa y qué te aporta: trato con clientes, trabajo en
 > equipo…]. Lo que más me gusta es el backend / construir APIs, y busco un equipo donde
 > seguir aprendiendo y aportar desde el primer día."
 
@@ -356,6 +357,120 @@
 ❌ Primera pregunta: "¿Cuántos días de vacaciones hay?"
 ✅ Pregunta primero por el trabajo y el equipo; las condiciones, al final o con RR. HH.
 ```
+
+---
+
+## ⚛️ L. React (más en `11`)
+
+**70. ¿Qué es React?**
+> Librería de JS para construir interfaces con componentes. Es declarativa: describo
+> la UI para cada estado y React actualiza el DOM de forma eficiente (Virtual DOM).
+
+**71. ¿Qué es JSX?**
+> Sintaxis parecida a HTML dentro de JS que se compila a llamadas a funciones. Usa
+> `className`, eventos en camelCase y `{}` para expresiones.
+
+**72. ¿Props vs estado?**
+> Props: datos del padre, solo lectura. Estado: memoria interna que se cambia con su
+> setter. Ambos provocan re-render al cambiar.
+
+**73. ¿Qué hace `useState`?**
+> Guarda un valor entre renders y devuelve `[valor, setValor]`; llamar al setter
+> programa un re-render. Si el nuevo valor depende del anterior: `setX(prev => ...)`.
+
+**74. ¿Por qué no mutar el estado?**
+> React compara referencias: si haces `push`, la referencia no cambia y no repinta. Se
+> crean copias con spread, `map` o `filter`.
+
+**75. ¿Cómo funciona `useEffect`?**
+> Ejecuta código después del render para sincronizarse con algo externo (API, timers).
+> Las dependencias dicen cuándo repetirlo (`[]` = al montar) y puede devolver una
+> función de limpieza.
+
+**76. ¿Para qué sirve la `key` en las listas?**
+> Para que React identifique cada elemento entre renders y conserve su estado. Uso el
+> id de la BD, no el índice.
+
+**77. ¿Cómo compartes estado entre componentes?**
+> Lifting state up: lo subo al padre común y lo bajo por props, con callbacks para
+> modificarlo. Para datos globales (usuario, tema), Context.
+
+**78. ¿Qué son las reglas de los hooks?**
+> Llamarlos solo en el nivel superior de componentes o custom hooks, nunca en `if` ni
+> bucles, porque React los identifica por el orden de llamada.
+
+**79. ¿`useMemo` vs `useCallback`?**
+> `useMemo` memoriza un valor calculado; `useCallback`, una función. Solo cuando hay un
+> problema de rendimiento real.
+
+**80. ¿Input controlado vs no controlado?**
+> Controlado: el valor vive en el estado (`value` + `onChange`). No controlado: lo
+> guarda el DOM y se lee con un ref o `FormData`.
+
+**81. ¿Cómo consumes una API en React?**
+> `fetch` dentro de `useEffect`, con estados de carga y error, comprobando `res.ok`,
+> cancelando con `AbortController` y con la URL en `VITE_API_URL`. O TanStack Query.
+
+**82. ¿Qué es el *prop drilling*?**
+> Pasar props por muchos niveles que no las usan. Se resuelve con composición
+> (`children`), Context o una librería de estado.
+
+**83. ¿CSR vs SSR?**
+> CSR: el navegador construye la página con JS (React + Vite). SSR: el servidor envía
+> el HTML ya generado (Next.js): mejor SEO y primera carga.
+
+**84. ¿Qué es Vite?**
+> Herramienta de frontend: servidor de desarrollo con recarga instantánea (HMR) y
+> build optimizado a `dist/`.
+
+---
+
+## ☁️ M. Despliegue y cloud (más en `12`)
+
+**85. ¿Has desplegado alguna aplicación?**
+> Sí: una API NestJS en Render con PostgreSQL en Supabase, y una API Express con
+> MongoDB Atlas. Build con `npm run build`, start con `node dist/...`, secretos en
+> variables de entorno del panel y despliegue automático en cada push a `main`.
+
+**86. ¿Para qué sirven las variables de entorno?**
+> Para que el mismo código funcione en cada entorno: puerto, cadenas de conexión y
+> secretos se leen de `process.env` y no se suben a Git.
+
+**87. ¿Por qué `process.env.PORT`?**
+> Porque la plataforma (Render) decide el puerto; si lo fijas, no detecta tu app.
+
+**88. ¿Build vs start?**
+> Build compila una vez por despliegue (necesita devDependencies); start ejecuta el JS
+> compilado en cada arranque. Nunca `--watch` en producción.
+
+**89. ¿Qué es Supabase?**
+> Plataforma sobre PostgreSQL con API automática, Auth, Storage y Realtime. Yo lo usé
+> como Postgres gestionado para mi API.
+
+**90. ¿Qué es RLS?**
+> Row Level Security: políticas de Postgres que limitan qué filas ve o cambia cada
+> usuario. Imprescindible si el frontend accede directamente a Supabase.
+
+**91. ¿Qué es MongoDB Atlas y qué es un replica set?**
+> MongoDB gestionado en la nube. El cluster son 3 nodos con los mismos datos: un primary
+> para escrituras y dos secondaries; si cae el primary se elige otro.
+
+**92. ¿Qué hay que configurar para conectar con Atlas?**
+> Un usuario de base de datos con su rol y la IP Access List (red). La URI
+> `mongodb+srv://` descubre los nodos por DNS y usa TLS.
+
+**93. ¿Por qué tu frontend da error de CORS en producción?**
+> Porque la API solo permite el origen de desarrollo. Se arregla en el backend con
+> `CORS_ORIGIN` apuntando al dominio del frontend.
+
+**94. ¿Qué diferencia hay entre desplegar el frontend y el backend?**
+> El backend es un proceso Node (Web Service). El frontend compilado son archivos
+> estáticos (Static Site/CDN), y sus variables `VITE_` se incrustan en el build: son
+> públicas.
+
+**95. ¿Por qué tarda tanto la primera petición a tu API?**
+> En el plan gratuito Render duerme el servicio tras 15 minutos sin tráfico; la primera
+> petición lo despierta (~50 s). En un plan de pago no pasa.
 
 ---
 

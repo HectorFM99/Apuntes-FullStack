@@ -267,6 +267,30 @@ jobs:
 > 📌 Esto lo puedes contar en la entrevista: "mis APIs tienen un pipeline de CI con
 > GitHub Actions que pasa ESLint y la comprobación de tipos en cada push y PR".
 
+### CD en tus proyectos: Render 🆕
+
+Render está conectado a GitHub: cada `git push` a `main` dispara **build** (`npm install
+&& npm run build`) y **despliegue** automáticos. Si el build falla, sigue en marcha la
+versión anterior.
+
+```
+git push → GitHub Actions (CI: lint + tipos) → Render (CD: build + start) → producción
+```
+
+> 📌 Frase para la entrevista: "Tengo CI con GitHub Actions y despliegue continuo con
+> Render: lo que llega a `main` se despliega solo, con las credenciales en variables de
+> entorno del panel" (más en `12`).
+
+### Testing en el frontend 🆕
+
+| Herramienta | Para qué |
+|-------------|----------|
+| **Vitest** | Tests unitarios en proyectos Vite (API igual que Jest) |
+| **React Testing Library** | Testear componentes como un usuario: buscar por rol/texto, hacer clic, comprobar lo que se ve |
+| **Playwright** / Cypress | E2E en un navegador real |
+
+> 💡 Ejemplo de test del `Counter` de `Vite/academia` en `../REACT/09`.
+
 ---
 
 ## 8.8 Docker básico ⭐

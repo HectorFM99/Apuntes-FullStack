@@ -22,7 +22,13 @@ conceptos que más se preguntan y **relacionarlos con lo que tú has hecho** en 
 | 7 | `07-seguridad-y-autenticacion.md` | Hash de contraseñas, JWT vs sesiones, XSS, CSRF, inyección SQL, HTTPS, `.env` |
 | 8 | `08-git-testing-y-buenas-practicas.md` | Flujo Git, merge vs rebase, PRs, testing, SOLID, DRY/KISS, clean code, CI/CD, Docker |
 | 9 | `09-algoritmia-y-ejercicios-de-live-coding.md` | Big O básico + 10 ejercicios típicos resueltos en JS |
-| 10 | `10-preguntas-de-entrevista-con-respuestas.md` | ~70 preguntas frecuentes con respuesta modelo, soft skills, STAR y preguntas para la empresa |
+| 10 | `10-preguntas-de-entrevista-con-respuestas.md` | ~95 preguntas frecuentes con respuesta modelo (incluye React y despliegue), soft skills, STAR y preguntas para la empresa |
+| 11 | `11-react-y-frontend-preguntas-clave.md` | 🆕 React: declarativo, Virtual DOM, props vs estado, `useState`, `useEffect`, `key`, lifting state up, Context, hooks, formularios, consumir APIs, Router, CSR vs SSR |
+| 12 | `12-despliegue-y-cloud-render-supabase-atlas.md` | 🆕 PaaS/DBaaS/BaaS, build vs start, variables de entorno, Render, Supabase (pooler, SSL, RLS), MongoDB Atlas (replica set, `+srv`, IP Access List), CORS en producción |
+
+> 🆕 **Actualización:** añadidos `11` (carpeta `../REACT/`) y `12` (carpetas
+> `../RENDER/`, `../SUPABASE/` y `../MONGODB-ATLAS/`), y las preguntas nuevas en
+> `10` (secciones **L** y **M**), `06` (§6.10) y `08` (§8.7).
 
 ---
 
@@ -31,11 +37,13 @@ conceptos que más se preguntan y **relacionarlos con lo que tú has hecho** en 
 1. `01` → la base: cómo viaja una petición. Sale en casi **todas** las entrevistas.
 2. `03` → **JavaScript** es lo que más te van a preguntar. Prioridad máxima.
 3. `05` y `06` → backend y bases de datos (tu bootcamp tuvo mucho de esto: luce).
-4. `07` → seguridad: preguntas cortas pero eliminatorias.
-5. `04` y `02` → TypeScript y HTML/CSS.
-6. `08` → Git, testing y buenas prácticas (demuestra que sabes trabajar en equipo).
-7. `09` → practica los ejercicios **escribiéndolos tú**, sin mirar.
-8. `10` → repaso final en voz alta, como si fuera la entrevista.
+4. `11` → **React**: en cualquier oferta "FullStack" lo preguntan.
+5. `12` → despliegue: haber subido algo a producción te diferencia de otros juniors.
+6. `07` → seguridad: preguntas cortas pero eliminatorias.
+7. `04` y `02` → TypeScript y HTML/CSS.
+8. `08` → Git, testing y buenas prácticas (demuestra que sabes trabajar en equipo).
+9. `09` → practica los ejercicios **escribiéndolos tú**, sin mirar.
+10. `10` → repaso final en voz alta, como si fuera la entrevista.
 
 ---
 
@@ -50,8 +58,8 @@ conceptos que más se preguntan y **relacionarlos con lo que tú has hecho** en 
 | 5 | `05` Backend: repasa `api-rastro` y `api-books-nest` | 2 h |
 | 6 | `06` Bases de datos: repasa `Proyecto-SQL` (JOINs) | 2 h |
 | 7 | 🧘 Descanso / repaso ligero de lo que peor llevas | 1 h |
-| 8 | `07` Seguridad + `02` HTML/CSS | 2 h |
-| 9 | `08` Git, testing, buenas prácticas | 2 h |
+| 8 | `11` React: repasa `Vite/academia` y explica en voz alta props vs estado y `useEffect` | 2 h |
+| 9 | `12` Despliegue (Render + Supabase + Atlas) + `07` Seguridad + `02` HTML/CSS + `08` Git y testing | 2,5 h |
 | 10 | `09` ejercicios 6–10 a mano + rehacer los de la semana 1 | 2 h |
 | 11 | Prepara **tu pitch** (presentación de 1 min) y 2 historias STAR (`10`) | 1,5 h |
 | 12 | `10` preguntas técnicas en voz alta (grábate) | 2 h |
