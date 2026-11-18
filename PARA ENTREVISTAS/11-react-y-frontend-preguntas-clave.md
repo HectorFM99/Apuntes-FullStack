@@ -2,7 +2,7 @@
 
 > Si la oferta dice "FullStack", **te van a preguntar React**. Las preguntas se
 > repiten mucho: qué es, props vs estado, hooks, `useEffect`, `key`, cómo
-> compartir estado y cómo consumir una API. Teoría completa en `../REACT/`.
+> compartir estado y cómo consumir una API. Teoría completa en `../Frontend/REACT/`.
 
 ---
 

@@ -1,9 +1,9 @@
 # 12 — ☁️ DESPLIEGUE Y CLOUD: RENDER, SUPABASE Y MONGODB ATLAS
 
 > Un junior que ha **desplegado** algo destaca. Este documento resume lo que
-> aprendiste en `../RENDER/`, `../SUPABASE/` y `../MONGODB-ATLAS/` en forma de
+> aprendiste en `../Backend/RENDER/`, `../Backend/SUPABASE/` y `../Backend/MONGODB-ATLAS/` en forma de
 > preguntas de entrevista. La foto completa está en
-> `../RENDER/CONCLUSIONES-Render-y-Supabase.md` y `../MONGODB-ATLAS/08-...`.
+> `../Backend/RENDER/CONCLUSIONES-Render-y-Supabase.md` y `../Backend/MONGODB-ATLAS/08-...`.
 
 ---
 
@@ -154,7 +154,7 @@ Render: front https://<front>.onrender.com → API https://<api>.onrender.com �
 
 **¿Qué problemas tuviste al desplegar?**
 > (Respuesta STAR, ver `10`. ⚠️ Cuenta **lo que te pasó de verdad**; esto es un
-> ejemplo basado en los errores de `../SUPABASE/02` y `../RENDER/05`.) "Al conectar Render con Supabase la conexión directa fallaba
+> ejemplo basado en los errores de `../Backend/SUPABASE/02` y `../Backend/RENDER/05`.) "Al conectar Render con Supabase la conexión directa fallaba
 > con `ENETUNREACH`. Investigando vi que usa IPv6 y Render no lo soporta, así que cambié
 > al Session pooler, que es IPv4, y ajusté el SSL. Aprendí a leer los logs y a separar
 > si un fallo es de red, de credenciales o de configuración."

@@ -289,7 +289,7 @@ git push → GitHub Actions (CI: lint + tipos) → Render (CD: build + start) �
 | **React Testing Library** | Testear componentes como un usuario: buscar por rol/texto, hacer clic, comprobar lo que se ve |
 | **Playwright** / Cypress | E2E en un navegador real |
 
-> 💡 Ejemplo de test del `Counter` de `Vite/academia` en `../REACT/09`.
+> 💡 Ejemplo de test del `Counter` de `Vite/academia` en `../Frontend/REACT/09`.
 
 ---
 

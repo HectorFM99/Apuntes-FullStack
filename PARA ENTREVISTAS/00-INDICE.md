@@ -26,8 +26,8 @@ conceptos que más se preguntan y **relacionarlos con lo que tú has hecho** en 
 | 11 | `11-react-y-frontend-preguntas-clave.md` | 🆕 React: declarativo, Virtual DOM, props vs estado, `useState`, `useEffect`, `key`, lifting state up, Context, hooks, formularios, consumir APIs, Router, CSR vs SSR |
 | 12 | `12-despliegue-y-cloud-render-supabase-atlas.md` | 🆕 PaaS/DBaaS/BaaS, build vs start, variables de entorno, Render, Supabase (pooler, SSL, RLS), MongoDB Atlas (replica set, `+srv`, IP Access List), CORS en producción |
 
-> 🆕 **Actualización:** añadidos `11` (carpeta `../REACT/`) y `12` (carpetas
-> `../RENDER/`, `../SUPABASE/` y `../MONGODB-ATLAS/`), y las preguntas nuevas en
+> 🆕 **Actualización:** añadidos `11` (carpeta `../Frontend/REACT/`) y `12` (carpetas
+> `../Backend/RENDER/`, `../Backend/SUPABASE/` y `../Backend/MONGODB-ATLAS/`), y las preguntas nuevas en
 > `10` (secciones **L** y **M**), `06` (§6.10) y `08` (§8.7).
 
 ---
