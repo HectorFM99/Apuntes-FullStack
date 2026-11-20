@@ -130,6 +130,22 @@ useEffect(() => {
 > eventos suben por callbacks. Si dos componentes necesitan el mismo estado, lo subo
 > al padre común."
 
+### Redux Toolkit ⭐ (teoría completa en `Frontend/REACT/11` y `12`)
+
+| Pregunta | Respuesta corta |
+|----------|-----------------|
+| ¿Qué es Redux? | Un **store** global único; el estado solo cambia despachando **acciones** que procesan **reducers** puros. Predecible y depurable con DevTools |
+| ¿Action, reducer, dispatch? | Acción = objeto `{ type, payload }` que describe qué pasó; reducer = `(estado, acción) => nuevoEstado` puro; `dispatch` = enviar la acción al store |
+| ¿Por qué Redux **Toolkit**? | Es la forma oficial: `createSlice` genera acciones y reducers, `configureStore` trae DevTools y thunk, Immer permite escribir "mutando" de forma inmutable |
+| ¿Cómo se conecta con React? | `<Provider store>` en `main.tsx`; `useSelector` para leer y `useDispatch` para escribir |
+| ¿Y lo asíncrono? | Los reducers no pueden ser async: `createAsyncThunk` (`pending/fulfilled/rejected`) o **RTK Query** para datos de la API con caché |
+| ¿Redux o Context? | Context para datos que cambian poco (usuario, tema); Redux para mucho estado compartido que cambia a menudo (re-render selectivo con selectores) |
+| ¿Redux o TanStack Query? | No compiten: datos del **servidor** → RTK Query / TanStack Query; estado **de cliente** → Redux / Zustand |
+
+> 🗣️ "En Redux Toolkit organizo el estado en slices por funcionalidad, uso hooks
+> tipados con TypeScript y RTK Query para la API, así no duplico datos del servidor
+> en el store. Si la app es pequeña, con `useState` y Context me basta."
+
 ---
 
 ## 11.8 Otros hooks

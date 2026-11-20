@@ -220,6 +220,9 @@ function Header() {
 | Usuario logueado, tema claro/oscuro, idioma | Estado que cambia muy a menudo y lo leen muchos (cada cambio re-renderiza a **todos** los consumidores) |
 | Datos que leen muchos componentes y cambian poco | Sustituir **todas** las props |
 
+> 💡 Cuando Context se queda corto (mucho estado compartido que cambia a menudo)
+> entra **Redux Toolkit** → `11` y `12`.
+
 ### Conectado con tu autenticación (`autenticacion`, `PARA ENTREVISTAS/07`)
 
 | Dónde guardar el JWT en el frontend | Pros | Contras |

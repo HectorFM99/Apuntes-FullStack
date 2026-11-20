@@ -252,7 +252,7 @@ usan (`App → Layout → Sidebar → Menu → UserAvatar`), aparece el *prop dr
 |----------|--------|
 | Composición con `children` | Muchas veces basta con reorganizar (`03`) |
 | **Context** (`useContext`) | Datos "globales": usuario logueado, tema, idioma (`08`) |
-| Librería de estado (Zustand, Redux Toolkit) | Apps grandes con mucho estado compartido |
+| Librería de estado (Zustand, Redux Toolkit) | Apps grandes con mucho estado compartido (`11`, `12`) |
 
 ---
 

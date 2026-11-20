@@ -1,6 +1,6 @@
 # 📋 CHEATSHEET — REACT
 
-> Chuleta rápida de comandos y código. Teoría en los documentos 01–10 de esta carpeta.
+> Chuleta rápida de comandos y código. Teoría en los documentos 01–12 de esta carpeta.
 
 ---
 
@@ -15,6 +15,7 @@
 | `npm run preview` | Sirve `dist/` en `http://localhost:4173` |
 | `npm run lint` | Linter (oxlint en `academia`) |
 | `npm install react-router` | Rutas |
+| `npm install @reduxjs/toolkit react-redux` | Redux Toolkit (`11`, `12`) |
 | `npm install -D vitest @testing-library/react @testing-library/user-event` | Tests |
 
 ```
@@ -271,6 +272,98 @@ import type { ChangeEvent, FormEvent, ReactNode } from 'react'   // import type 
 
 ---
 
+## 13. Redux Toolkit (`11`, `12`)
+
+```ts
+// features/interests/interestsSlice.ts
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+
+const interestsSlice = createSlice({
+  name: 'interests',
+  initialState: { ids: [] as string[] },
+  reducers: {
+    toggleInterest(state, action: PayloadAction<string>) {   // Immer: "mutar" vale aquí
+      const i = state.ids.indexOf(action.payload)
+      if (i === -1) state.ids.push(action.payload)
+      else state.ids.splice(i, 1)
+    },
+    clearInterests: () => ({ ids: [] }),                       // o devolver estado nuevo
+  },
+})
+export const { toggleInterest, clearInterests } = interestsSlice.actions
+export default interestsSlice.reducer
+export const selectInterestCount = (s: RootState) => s.interests.ids.length
+```
+
+```ts
+// app/store.ts
+export const store = configureStore({
+  reducer: { interests: interestsReducer, [productsApi.reducerPath]: productsApi.reducer },
+  middleware: gDM => gDM().concat(productsApi.middleware),
+})
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+// app/hooks.ts
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()
+```
+
+```tsx
+<Provider store={store}><App /></Provider>                 // main.tsx
+
+const count = useAppSelector(selectInterestCount)          // leer
+const dispatch = useAppDispatch()
+dispatch(toggleInterest('React'))                          // escribir
+```
+
+```ts
+// Async con thunk
+export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: string }>(
+  'products/fetchAll',
+  async (_, { rejectWithValue }) => {
+    const res = await fetch(`${API_URL}/api/products`)
+    if (!res.ok) return rejectWithValue(`Error ${res.status}`)
+    return (await res.json()) as Product[]
+  },
+)
+extraReducers: b => b
+  .addCase(fetchProducts.pending,   s => { s.status = 'loading' })
+  .addCase(fetchProducts.fulfilled, (s, a) => { s.status = 'succeeded'; s.items = a.payload })
+  .addCase(fetchProducts.rejected,  (s, a) => { s.status = 'failed'; s.error = a.payload ?? null })
+
+await dispatch(createProduct(data)).unwrap()               // lanza si falla
+```
+
+```ts
+// RTK Query
+export const productsApi = createApi({
+  reducerPath: 'productsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URL}/api` }),
+  tagTypes: ['Product'],
+  endpoints: b => ({
+    getProducts: b.query<Product[], void>({ query: () => 'products', providesTags: ['Product'] }),
+    addProduct: b.mutation<Product, Omit<Product, '_id'>>({
+      query: body => ({ url: 'products', method: 'POST', body }), invalidatesTags: ['Product'],
+    }),
+  }),
+})
+export const { useGetProductsQuery, useAddProductMutation } = productsApi
+
+const { data = [], isLoading, isError } = useGetProductsQuery()
+const [addProduct, { isLoading: saving }] = useAddProductMutation()
+```
+
+| Necesito | Uso |
+|----------|-----|
+| Estado local | `useState` / `useReducer` |
+| Global que cambia poco | Context |
+| Global de cliente, mucho y frecuente | Redux Toolkit / Zustand |
+| Datos de la API con caché | RTK Query / TanStack Query |
+| Valor derivado (filter/map) | `createSelector` |
+
+---
+
 ## ⚠️ Errores típicos
 
 | Síntoma | Arreglo |
@@ -282,4 +375,7 @@ import type { ChangeEvent, FormEvent, ReactNode } from 'react'   // import type 
 | Petición duplicada en desarrollo | `StrictMode`: normal; añade limpieza con `AbortController` |
 | `blocked by CORS policy` | `CORS_ORIGIN` en la API o proxy de Vite |
 | `VITE_API_URL` es `undefined` | Prefijo `VITE_` y reiniciar `npm run dev` |
+| `could not find react-redux context value` | Falta `<Provider store={store}>` en `main.tsx` |
+| `A non-serializable value was detected` | No guardes `Date`/`Map`/funciones en Redux: strings y objetos planos |
+| RTK Query: middleware "has not been added to the store" | `getDefaultMiddleware().concat(api.middleware)` |
 | `dev` funciona, `build` falla | Errores de tipos o mayúsculas en imports: `npm run build` antes de subir |

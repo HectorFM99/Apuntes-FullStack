@@ -7,7 +7,7 @@ desplegar el frontend. Ejemplos reales **copiados de tu proyecto**
 `Vite/academia` (catálogo de cursos).
 
 > ⚠️ El proyecto **NO** se ha modificado. Solo se han copiado fragmentos de su código.
-> 📌 Lo que no aparece en `academia` (efectos, fetch, formularios, router…) se
+> 📌 Lo que no aparece en `academia` (efectos, fetch, formularios, router, Redux…) se
 > explica con ejemplos nuevos que **conectan** con tus APIs de las carpetas
 > `EXPRESS`, `NESTJS`, `MONGODB-ATLAS` y `RENDER`.
 
@@ -27,6 +27,8 @@ desplegar el frontend. Ejemplos reales **copiados de tu proyecto**
 | 8 | `08-hooks-avanzados-context-router-y-estilos.md` | Reglas de los hooks, `useRef`, `useMemo`, `useCallback`, `useContext`, custom hooks, React Router, formas de dar estilos, `StrictMode` |
 | 9 | `09-build-despliegue-y-errores-comunes.md` | `npm run build`, `dist/`, `preview`, desplegar en **Render** (Static Site), variables `VITE_`, errores típicos y cómo leerlos |
 | 10 | `10-ejemplos-completos-de-proyectos.md` | Tu `academia` archivo por archivo + la versión "full stack" conectada a una API |
+| 11 | `11-redux-toolkit-estado-global.md` | Qué problema resuelve Redux, store/action/reducer/dispatch, `useReducer` como puente, Redux Toolkit, `createSlice` + Immer, `configureStore`, hooks tipados, `Provider`, `useSelector`/`useDispatch`, selectores y `createSelector`, DevTools, tests de reducers |
+| 12 | `12-redux-asincrono-thunks-y-rtk-query.md` | Thunks, `createAsyncThunk` + `extraReducers`, `.unwrap()`, **RTK Query** (queries, mutations, caché, tags), JWT con `prepareHeaders`, Redux vs Context vs Zustand vs TanStack Query, errores típicos, `academia` con Redux |
 | 📋 | `99-CHEATSHEET.md` | Chuleta de comandos y código para consultar rápido |
 
 ---
@@ -57,6 +59,8 @@ desplegar el frontend. Ejemplos reales **copiados de tu proyecto**
 7. `08` → herramientas para cuando la app crece.
 8. `09` → ponerlo en internet.
 9. `10` → repaso con el código real.
+10. `11` → Redux Toolkit: estado global cuando Context se queda corto (**muy pedido en empresas**).
+11. `12` → Redux asíncrono y RTK Query: tu API conectada a través de Redux.
 
 ---
 
